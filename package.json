@@ -1,8 +1,9 @@
 {
-  "name": "Test-My-Password",
+  "name": "PPwned",
   "version": "1.0.0",
   "description": "",
-  "main": "test_my_password.js",
+  "main": "bin.js",
+  "bin": "bin.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
