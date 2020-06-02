@@ -29,47 +29,28 @@ console.log("Sending : ", sentbit, " to API for testing");
 console.log("Using ", otherbit, " for testing locally");
 console.log("Getting data ...");
 
-fs.open("./hashes", "a")
-  .then((fileHandle) => {
-    /// using https Client we request the api for data
-    https.get(`https://api.pwnedpasswords.com/range/${sentbit}`, (res) => {
-      console.log("Request statusCode:", res.statusCode);
+let data=""
+https.get(`https://api.pwnedpasswords.com/range/${sentbit}`, (res) => {
+        if(res.statusCode ==200){
+            console.log("Request statusCode:", res.statusCode);
       /// Appending all retreived data to the file .
       res.on("data", (d) => {
-        fileHandle.appendFile(d);
+       
+        data = data +d.toString();
       });
       /// when we finish appending
       res.on("end", () => {
-        fileHandle.close();
+
+        console.log("Starting test ...");
+        testPassword(data.toString(), otherbit); /// testing retreived data against the otherbit of the hash
         /// opening the file in read only
-        fs.open("./hashes", "r").then((fileHandle) => {
-          fileHandle
-            .readFile() /// reading all the data from the file
-            .then((data) => {
-              console.log("Starting test ...");
-              testPassword(data.toString(), otherbit); /// testing retreived data against the otherbit of the hash
-            })
-            .catch((err) => console.error(err))
-            .finally(() => {
-              /// closing the handle to the file
-              fileHandle.close();
-
-              // delete file named 'hashes'
-              fs.unlink("./hashes")
-                .then(() => {
-                  console.log("Hashes file deleted");
-                })
-                .catch((err) => {
-                  console.log(err);
-                })
-                .finally(()=> console.log('Thank you for using our script :)'));
-            });
-        });
+        console.log('Thank you for testing your password with our script')
       });
+        }else {
+            console.log('Couldn\'t get data , can test your password')
+        } 
+      
     });
-  })
-  .catch((err) => console.error(err));
-
 function testPassword(data, test) {
   let lines = data.split("\r\n"); /// getting all the lines
   let pwned = false;
