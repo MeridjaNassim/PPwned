@@ -81,7 +81,10 @@ function testPassword(data, test) {
       /// if it exists then the password is pwned
       let item = line.split(":");
       pwned = true;
-      console.log("Password compromised and pwned ,", item[1] + " times");
+      console.log('------------')
+      console.log('Found data');
+      console.log(line);
+      console.log("Password compromised and pwned ,", item[1] + " times , make sure to change it");
       break;
     }
   }
