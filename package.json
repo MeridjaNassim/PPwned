@@ -2,8 +2,8 @@
   "name": "PPwned",
   "version": "1.0.0",
   "description": "",
-  "main": "ppwned.js",
-  "bin": "ppwned.js",
+  "main": "./dist/ppwned.js",
+  "bin": "./dist/ppwned.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build" : "tsc",
