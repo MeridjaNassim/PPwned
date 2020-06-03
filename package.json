@@ -2,12 +2,20 @@
   "name": "PPwned",
   "version": "1.0.0",
   "description": "",
-  "main": "bin.js",
-  "bin": "bin.js",
+  "main": "ppwned.js",
+  "bin": "ppwned.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build" : "tsc",
+    "start" :"node ./dist/ppwned.js",
+    "dev" : "tsc -w"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^14.0.9",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.3"
+  }
 }
