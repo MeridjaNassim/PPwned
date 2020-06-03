@@ -2,7 +2,7 @@
 A small node script that checks if a giving password was pwned using K-Anonymality
 
 # How To Run
-- Download PPwned.exe script https://gofile.io/d/uCAfwR
+- Download PPwned.exe script https://gofile.io/d/w9nrzP
 - run the script on a terminal (powershell , cmd ... ) like this : ./ppwned "test_password"
 # Supported OS
 this script is only compiled for win-x64 for now 
